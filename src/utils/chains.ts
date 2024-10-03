@@ -14,7 +14,7 @@ export enum ChainId {
   MATIC = 137,
   OPTIMISM = 10,
   ZKSYNC_ERA = 324,
-  AIOZ_TESTNET = 4102
+  AIOZ_TESTNET = 4102,
 }
 
 // subgraph does not support string enums, hence these constants
