@@ -14,6 +14,7 @@ export enum ChainId {
   MATIC = 137,
   OPTIMISM = 10,
   ZKSYNC_ERA = 324,
+  AIOZ_TESTNET = 4102
 }
 
 // subgraph does not support string enums, hence these constants
@@ -27,6 +28,7 @@ const MAINNET_NETWORK_NAME = 'mainnet'
 const MATIC_NETWORK_NAME = 'matic'
 const OPTIMISM_NETWORK_NAME = 'optimism'
 const ZKSYNC_ERA_NETWORK_NAME = 'zksync-era'
+const AIOZ_TESTNET_NETWORK_NAME = 'aioz-testnet'
 
 // Note: All token and pool addresses should be lowercased!
 export class SubgraphConfig {
@@ -387,6 +389,27 @@ export function getSubgraphConfig(): SubgraphConfig {
           decimals: BigInt.fromI32(6),
         },
       ],
+      poolsToSkip: [],
+      poolMappings: [],
+    }
+  } else if (selectedNetwork == AIOZ_TESTNET_NETWORK_NAME) {
+    return {
+      factoryAddress: '0xC6503F977090FF88400F7F1D1e8855B74E40C1d7',
+      stablecoinWrappedNativePoolAddress: '0x44aa83a834fc34413312fb0dc17159f90b031df6', // USDT-WETH 0.3% pool
+      stablecoinIsToken0: true,
+      wrappedNativeAddress: '0x9ca90d6fe5e747200b97f42348fade923889738a', // WETH
+      minimumNativeLocked: BigDecimal.fromString('20'),
+      stablecoinAddresses: [
+        '0x6d706649c05764013534edddbe9287bf22a78f45', // USDC
+        '0x8db0d130daea7a66f7279ef86f523e3c37258208', // USDT
+      ],
+      whitelistTokens: [
+        '0x6d706649c05764013534edddbe9287bf22a78f45', // USDC
+        '0x8db0d130daea7a66f7279ef86f523e3c37258208', // USDT
+        '0x9ca90d6fe5e747200b97f42348fade923889738a', // WETH
+        '0xeb00fde9ea6818b18c8227fa0c32d10ccaee9eca', // STRK
+      ],
+      tokenOverrides: [],
       poolsToSkip: [],
       poolMappings: [],
     }
